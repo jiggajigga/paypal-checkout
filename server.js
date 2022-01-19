@@ -49,9 +49,12 @@ app.post("/create-order", async (req, res) => {
 
   try {
     const order = await paypalClient.execute(request)
+    console.log("request " +request) 
     res.json({ id: order.result.id })
+    console.log("order id " + order.result.id) 
   } catch (e) {
     res.status(500).json({ error: e.message })
+    console.log("error " +e.message) 
   }
 })
 
