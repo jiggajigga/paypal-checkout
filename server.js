@@ -38,30 +38,13 @@ app.post("/create-order", async (req, res) => {
   request.requestBody({
     intent: "CAPTURE",
     purchase_units: [
-      {
-        amount: {
-          currency_code: "USD",
-          value: total,
-          breakdown: {
-            item_total: {
-              currency_code: "USD",
-              value: total,
-            },
-          },
-        },
-        items: req.body.items.map(item => {
-          const storeItem = storeItems.get(item.id)
-          return {
-            name: storeItem.name,
-            unit_amount: {
-              currency_code: "USD",
-              value: storeItem.price,
-            },
-            quantity: item.quantity,
-          }
-        }),
-      },
-    ],
+    {
+      "amount": {
+        "currency_code": "AUD",
+        "value": "100.00"
+      }
+    }
+  ],
   })
 
   try {
